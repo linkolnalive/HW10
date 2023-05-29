@@ -1,0 +1,4 @@
+name age nickname f
+Vlad 24 LinkolnAlive f
+Vanya 23 inW1Ncible f
+rgg er e er
