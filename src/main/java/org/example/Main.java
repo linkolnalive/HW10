@@ -44,9 +44,6 @@ public class Main {
     }
 
     // task 2
-    static class User {
-        HashMap<String, Object> fields = new HashMap<String, Object>();
-    }
     public static void generateUserJsonFromFile() {
         BufferedReader reader;
         try {
@@ -61,7 +58,7 @@ public class Main {
                 }
                 User user = new User();
                 for (int i = 0; i < line.split(" ").length; i++) {
-                    user.fields.put(fieldNames[i], line.split(" ")[i]);
+                    user.getFields().put(fieldNames[i], line.split(" ")[i]);
                 }
                 users.add(user);
                 line = reader.readLine();
@@ -70,10 +67,7 @@ public class Main {
 
             JSONArray outerJA = new JSONArray();
             for (User user : users) {
-                JSONObject innerJO = new JSONObject(user.fields);
-//                for (String fieldName: fieldNames) {
-//                    innerJO.put(fieldName, user.fields.get(fieldName));
-//                }
+                JSONObject innerJO = new JSONObject(user.getFields());
                 outerJA.add(innerJO);
             }
             String res = outerJA.toJSONString();
@@ -118,6 +112,7 @@ public class Main {
             for (String word: res.get(count - 1)) {
                 if (word.equals(currWord)) {
                     found = true;
+                    break;
                 }
             }
             if (!found) {
@@ -133,8 +128,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-//        checkPhoneNumbersFromFile(); // task 1
-//        generateUserJsonFromFile(); // task 2
-//        countWordsFromFile(); // task 3
+        checkPhoneNumbersFromFile(); // task 1
+        generateUserJsonFromFile(); // task 2
+        countWordsFromFile(); // task 3
     }
 }
